@@ -189,8 +189,16 @@ class Compare_Headlines:
         cos_sim = dot_product / (mag1*mag2)
         return cos_sim
 
+# object used to manipulate sentences to eleminate punctuation
 class Eleminate_Punctuation:
+    '''
+    Object that takes a list of string sentences and returns a list
+    of lists that contain the words in the sentences without punctuation.
 
+    Parameters:
+        string_list (list of sentence strings) : list of sentence strings to have
+            their punctuation eleminated. 
+    '''
     def eleminate_punctuation(self, string_list):
         DetectorFactory.seed = 0
         sentences = pd.DataFrame(columns=['sent'])
@@ -208,7 +216,3 @@ class Eleminate_Punctuation:
                         word_line.append(elem.lower())
             sentences.at[i, 'sent'] = word_line
         return sentences
-
-comp = Compare_Headlines('Get_Data/politics_data_11.21.2018_03.02.2020_W2VModel', ['Donal Trump likes anal sex', 'Mike Pence is a queer rights activists'])
-sim = comp.CosineSimilarity(comp.vectors, comp.titles[0], comp.titles[1])
-print(sim)
