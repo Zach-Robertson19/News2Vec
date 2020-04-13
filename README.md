@@ -20,10 +20,9 @@ Usage.
   cos_sim = comp.CosineSimilarity(comp.vectors, comp.titles[0], comp.titles[1])
   
 Other Methods:
-
-Get_Data/select_data.py - get a subset of data from a larger group of data
-  Use Get_Subset_of_Data(start_date, end_date) object to automatically export the subset to a csv, make sure to use mm.dd.YYYY format       for the dates
+  Get_Data/Manage_Data.py
   
-Get_Data/add_data.py - add two data files together if ones start date equals the others end date.
-  Use Add_data_files() object to automatically find files that have overlapping dates or where ones start date equals another end
-    date and add those data files together.
+    class Get_Subset_of_Data(start_date, end_date) creates a new csv data file for the time range specified in the instantiation of the       object, assuming a data file exists with that time range included inside of it.
+    
+    class Add_Data_from_Matching_Dates() automatically searches for data files that share a start and end date, and if a set of these
+      files is found it will add them together and export it as a new data file.
