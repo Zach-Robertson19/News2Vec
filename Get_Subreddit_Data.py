@@ -5,8 +5,24 @@ import time
 import csv
 import os
 
+# Class for getting subreddit data via pushift.io api
 class Get_Data:
+    '''
+    Get_data(subreddit, start_date, end_date) is a method that gets data from the
+    pushift.io api and organizes it into a dataframe, sorted by date, and exports
+    this data to a csv file for later manipulation.
 
+    Parameters:
+        subreddit (string) : a string that represents the subreddit data you want to
+            get, so for example the r/politics titles and data would have a 
+            subreddit = \'politics\'
+
+        start_date (string) : string that represents the first day of posts to be saved
+            Must be in the \'mm.dd.YYYY\' format.
+
+        end_date (string) : string that represents the last day of posts to be saved.
+            Must be in the \'mm.dd.YYYY\' format.
+    '''
     def __init__(self, subreddit, start_date, end_date):
         self.subreddit = subreddit
         self.start_date = start_date
@@ -17,6 +33,15 @@ class Get_Data:
         self.check_for_existing_data()
 
     def check_for_existing_data(self):
+        '''
+        Method that finds if a file was already started with the desired dates,
+        and if so restarts the data gathering process so that if data gathering was
+        aborted unexpectedly you can restart it without issue.
+
+        Parameters:
+
+            None
+        '''
         if os.path.isfile(self.filename):
             df = pd.read_csv(self.filename)
             last_time = df['created_utc'].iloc[-1]
@@ -29,6 +54,18 @@ class Get_Data:
             self.get_subreddit_titles(self.start_date, self.end_date)
 
     def get_subreddit_titles(self, start_date, end_date):
+        '''
+        Main method for getting subreddit data from the pushift.io api and adding 
+        it to a pandas dataframe, and after it is done, exporting it to a csv file.
+
+        Parameters:
+
+            start_date (string) : string that represents the first day of posts to be saved
+                Must be in the \'mm.dd.YYYY\' format.
+
+            end_date (string) : string that represents the last day of posts to be saved.
+                Must be in the \'mm.dd.YYYY\' format.
+        '''
         subreddit = self.subreddit
         filename = self.filename
         start = start_date
@@ -84,5 +121,3 @@ class Get_Data:
                 new_df.to_csv(filename, mode='a', header=False, index=False)
             
             time.sleep(1)
-
-Get_Data('politics', '11.21.2016', '11.21.2018')
