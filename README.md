@@ -1,5 +1,5 @@
 # News2Vec
-A program that find the cosine similarity between reddit r/politics data using the Word2Vec word embedding model.
+A program that find the cosine similarity between reddit r/politics titles (which are news headlines according to the subreddit rules) using the Word2Vec word embedding model, which builds word vectors for each word in a corpus, coupled with a numerical averaging method to find approximate sentence vectors.
 
 Usage.
 
