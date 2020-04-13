@@ -22,7 +22,7 @@ Usage.
 Other Methods:
   Get_Data/Manage_Data.py
   
-    class Get_Subset_of_Data(start_date, end_date) creates a new csv data file for the time range specified in the instantiation of the       object, assuming a data file exists with that time range included inside of it.
-    
-    class Add_Data_from_Matching_Dates() automatically searches for data files that share a start and end date, and if a set of these
-      files is found it will add them together and export it as a new data file.
+  class Get_Subset_of_Data(start_date, end_date) creates a new csv data file for the time range specified in the instantiation of the       object, assuming a data file exists with that time range included inside of it.
+
+  class Add_Data_from_Matching_Dates() automatically searches for data files that share a start and end date, and if a set of these
+    files is found it will add them together and export it as a new data file.
