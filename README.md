@@ -5,7 +5,7 @@ Usage.
 
 1. Get data from the desired subreddit.
   
-  Use subreddit_data_to_csv.py, this will export the data as a csv file into the Get_Data folder
+  Use Get_Subreddit_Data.py, this will export the data as a csv file into the Get_Data folder
  
 2. Create Word2Vec Model using subreddit data.
   
